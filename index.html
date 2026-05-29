@@ -41,7 +41,7 @@
       display:flex;
       justify-content:center;
       margin-top:48px;
-      margin-bottom:42px;
+      margin-bottom:24px;  /* RESSERRÉ : 42px → 24px (desktop) */
     }
     .logo {
       width:100%;
@@ -54,7 +54,7 @@
       width:100%;
       display:flex;
       justify-content:center;
-      margin-bottom:42px;
+      margin-bottom:42px;   /* inchangé */
     }
     .main-image {
       width:100%;
@@ -88,9 +88,10 @@
       color:rgba(255,255,255,0.52);
       font-weight:300;
     }
-    /* ───────────────── GO ON ───────────────── */
+    /* ───────────────── GO ON (améliorations tactiles + flottement) ───────────────── */
     .go-block {
       margin-top:4px;
+      position:relative;
     }
     .go-on {
       text-decoration:none;
@@ -101,16 +102,45 @@
       color:rgba(255,255,255,0.34);
       transition:opacity 0.35s ease;
       font-weight:300;
+      display:inline-block;
+      position:relative;
+      -webkit-tap-highlight-color: transparent;  /* supprime flash gris iPhone */
+      /* Animation flottante très subtile, continue, lente */
+      animation: floatGentle 3s ease-in-out infinite;
     }
+    /* Zone cliquable élargie (invisible) sans modifier le texte visuel */
+    .go-on::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: -24px;
+      right: -24px;
+      bottom: -12px;
+      z-index: 1;
+    }
+    @keyframes floatGentle {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-1px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    /* Arrêt très léger de l'animation au survol / toucher pour éviter un effet parasite */
     .go-on:hover,
     .go-on:active {
-      opacity:0.92;
+      animation: none;
+      transform: translateY(0);
+      opacity: 0.92;
     }
     /* ───────────────── MOBILE ───────────────── */
     @media (max-width:768px) {
       .logo-block {
         margin-top:38px;
-        margin-bottom:34px;
+        margin-bottom:18px;  /* RESSERRÉ : 34px → 18px sur mobile */
       }
       .image-block {
         margin-bottom:34px;
@@ -127,11 +157,11 @@
 <body>
   <!-- LOGO -->
   <div class="logo-block">
-    <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS">
+    <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
   <!-- IMAGE PRINCIPALE -->
   <div class="image-block">
-    <img src="main-image.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
+    <img src="main-image.jpg" class="main-image" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
   <!-- CITATION -->
   <div class="citation-block">
@@ -144,7 +174,7 @@
   </div>
   <!-- NAVIGATION -->
   <div class="go-block">
-    <a href="page2.html" class="go-on">
+    <a href="page2.html" class="go-on" rel="noopener">
       go on
     </a>
   </div>
