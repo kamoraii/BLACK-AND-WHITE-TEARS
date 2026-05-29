@@ -2,167 +2,225 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>BLACK AND WHITE TEARS</title>
-  <!-- FACEBOOK / META -->
+  <!-- SEO / Référencement -->
+  <meta name="description" content="Galerie artistique immersive BLACK AND WHITE TEARS. Animaux de la savane évoluant avec des motifs zèbres. Photoréalisme, élégance, dualité.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="meda's">
+  <meta name="copyright" content="© Black and White Tears by meda's">
+  <link rel="canonical" href="https://kamoraii.github.io/BLACK-AND-WHITE-TEARS/">
+  <!-- Open Graph / Facebook -->
   <meta property="og:title" content="BLACK AND WHITE TEARS">
   <meta property="og:image" content="https://kamoraii.github.io/BLACK-AND-WHITE-TEARS/main-image.jpg">
   <meta property="og:description" content="A parallel wildlife universe where majestic creatures evolve with sacred black-and-white zebra patterns.">
-  <!-- ICÔNE IPHONE -->
+  <!-- Icône iPhone -->
   <link rel="apple-touch-icon" href="icon.jpg">
-  <!-- POLICES -->
+  <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
+    /* RESET & CORRECTION DÉBORDEMENT */
     *, *::before, *::after {
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     html, body {
-      background:#000000;
-      color:#ffffff;
-      overflow-x:hidden;
+      background: #000000;
+      color: #ffffff;
+      overflow-x: hidden;     /* élimine le trait blanc latéral */
+      width: 100%;
+      position: relative;
     }
     body {
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      animation:fadein 1.8s ease both;
-      padding:0 24px 65px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadein 1.8s ease both;
+      padding: 0 24px 65px;
+      overflow-y: auto;
     }
     @keyframes fadein {
-      from { opacity:0; }
-      to { opacity:1; }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    /* ───────────────── LOGO ───────────────── */
+
+    /* LOGO – remonté (marge haute réduite) */
     .logo-block {
-      width:100%;
-      display:flex;
-      justify-content:center;
-      margin-top:48px;
-      margin-bottom:24px;  /* RESSERRÉ : 42px → 24px (desktop) */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;      /* avant 48px → remontée ~30px */
+      margin-bottom: 24px;   /* espace entre logo et breathe */
     }
     .logo {
-      width:100%;
-      max-width:640px;
-      height:auto;
-      display:block;
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      display: block;
     }
-    /* ─────────────── IMAGE PRINCIPALE ─────────────── */
-    .image-block {
-      width:100%;
-      display:flex;
-      justify-content:center;
-      margin-bottom:42px;   /* inchangé */
+
+    /* BLOC BREATHE (lié entre logo et image) */
+    .breathe-block {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;    /* ajustement sous le lien avant l'image */
+      position: relative;
+      opacity: 0;              /* caché au départ */
+      visibility: hidden;
+      animation: appearAfter5s 0.01s 5s forwards; /* déclenche l'affichage après 5s */
     }
-    .main-image {
-      width:100%;
-      max-width:940px;
-      aspect-ratio:1/1;
-      object-fit:cover;
-      display:block;
-    }
-    /* ───────────────── CITATION ───────────────── */
-    .citation-block {
-      max-width:760px;
-      text-align:center;
-      margin-bottom:38px;
-      padding:0 10px;
-    }
-    .quote {
-      font-family:'Cormorant Infant', serif;
-      font-size:clamp(1.55rem, 4vw, 2.5rem);
-      line-height:1.65;
-      letter-spacing:0.01em;
-      color:#f1f1f1;
-      margin-bottom:18px;
-      font-weight:300;
-      font-style:italic;
-    }
-    .author {
-      font-family:'Inter', sans-serif;
-      font-size:0.72rem;
-      letter-spacing:0.28em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.52);
-      font-weight:300;
-    }
-    /* ───────────────── GO ON (améliorations tactiles + flottement) ───────────────── */
-    .go-block {
-      margin-top:4px;
-      position:relative;
-    }
-    .go-on {
-      text-decoration:none;
-      font-family:'Inter', sans-serif;
-      font-size:0.70rem;
-      letter-spacing:0.34em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.34);
-      transition:opacity 0.35s ease;
-      font-weight:300;
-      display:inline-block;
-      position:relative;
-      -webkit-tap-highlight-color: transparent;  /* supprime flash gris iPhone */
-      /* Animation flottante très subtile, continue, lente */
-      animation: floatGentle 3s ease-in-out infinite;
-    }
-    /* Zone cliquable élargie (invisible) sans modifier le texte visuel */
-    .go-on::before {
-      content: '';
-      position: absolute;
-      top: -12px;
-      left: -24px;
-      right: -24px;
-      bottom: -12px;
-      z-index: 1;
-    }
-    @keyframes floatGentle {
-      0% {
-        transform: translateY(0px);
+    /* Animation d'apparition : fade + glissement */
+    @keyframes appearAfter5s {
+      to {
+        opacity: 1;
+        visibility: visible;
       }
-      50% {
-        transform: translateY(-1px);
+    }
+    .breathe-link {
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.70rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.34);
+      font-weight: 300;
+      display: inline-block;
+      position: relative;
+      -webkit-tap-highlight-color: transparent;
+      opacity: 0;
+      transform: translateY(6px);   /* départ légèrement plus bas */
+      animation: breatheReveal 1.2s ease-out 5s forwards, floatGentle 3s ease-in-out 6s infinite;
+    }
+    /* Effet de révélation : fondu + remontée douce */
+    @keyframes breatheReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(6px);
       }
       100% {
-        transform: translateY(0px);
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-    /* Arrêt très léger de l'animation au survol / toucher pour éviter un effet parasite */
-    .go-on:hover,
-    .go-on:active {
+    /* Flottement permanent et très lent après apparition */
+    @keyframes floatGentle {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-1px); }
+      100% { transform: translateY(0px); }
+    }
+    /* Zone cliquable élargie (invisible) */
+    .breathe-link::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: -28px;
+      right: -28px;
+      bottom: -14px;
+      z-index: 1;
+    }
+    /* Arrêt du flottement au survol/toucher pour meilleure interaction */
+    .breathe-link:hover,
+    .breathe-link:active {
       animation: none;
       transform: translateY(0);
       opacity: 0.92;
     }
-    /* ───────────────── MOBILE ───────────────── */
-    @media (max-width:768px) {
+
+    /* IMAGE PRINCIPALE */
+    .image-block {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 42px;
+    }
+    .main-image {
+      width: 100%;
+      max-width: 940px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* CITATION */
+    .citation-block {
+      max-width: 760px;
+      text-align: center;
+      margin-bottom: 38px;
+      padding: 0 10px;
+    }
+    .quote {
+      font-family: 'Cormorant Infant', serif;
+      font-size: clamp(1.55rem, 4vw, 2.5rem);
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+      color: #f1f1f1;
+      margin-bottom: 18px;
+      font-weight: 300;
+      font-style: italic;
+    }
+    .author {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.52);
+      font-weight: 300;
+    }
+
+    /* COPYRIGHT TRÈS DISCRET */
+    .copyright {
+      margin-top: 30px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.22);
+      font-weight: 300;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
       .logo-block {
-        margin-top:38px;
-        margin-bottom:18px;  /* RESSERRÉ : 34px → 18px sur mobile */
+        margin-top: 8px;       /* remontée mobile : avant 38px → 8px */
+        margin-bottom: 20px;
+      }
+      .breathe-block {
+        margin-bottom: 22px;
       }
       .image-block {
-        margin-bottom:34px;
+        margin-bottom: 34px;
       }
       .citation-block {
-        margin-bottom:30px;
+        margin-bottom: 30px;
       }
       .quote {
-        line-height:1.55;
+        line-height: 1.55;
       }
     }
   </style>
 </head>
 <body>
-  <!-- LOGO -->
+
+  <!-- LOGO (photo importée) -->
   <div class="logo-block">
     <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
+
+  <!-- LIEN "breathe" (apparition après 5s, entre logo et image) -->
+  <div class="breathe-block">
+    <a href="page2.html" class="breathe-link" rel="noopener">
+      breathe
+    </a>
+  </div>
+
   <!-- IMAGE PRINCIPALE -->
   <div class="image-block">
     <img src="main-image.jpg" class="main-image" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
+
   <!-- CITATION -->
   <div class="citation-block">
     <div class="quote">
@@ -172,11 +230,11 @@
       — Pierre Teilhard de Chardin
     </div>
   </div>
-  <!-- NAVIGATION -->
-  <div class="go-block">
-    <a href="page2.html" class="go-on" rel="noopener">
-      go on
-    </a>
+
+  <!-- COPYRIGHT DISCRET -->
+  <div class="copyright">
+    © Black and White Tears by meda’s
   </div>
+
 </body>
 </html>
