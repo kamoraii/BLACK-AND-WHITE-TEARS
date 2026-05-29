@@ -1,117 +1,224 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BLACK AND WHITE TEARS</title>
-<link rel="apple-touch-icon" href="icon.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-body{
-background:black;
-color:white;
-font-family:'Cormorant Garamond', serif;
-text-align:center;
-padding:40px 20px 80px;
-}
-.container{
-max-width:1200px;
-margin:auto;
-}
-.title{
-font-family:'Cinzel', serif;
-font-size:3.5rem;
-letter-spacing:10px;
-font-weight:300;
-margin-bottom:60px;
-}
-.main-image{
-width:100%;
-display:block;
-margin:auto;
-margin-bottom:70px;
-}
-.quote{
-font-size:2rem;
-line-height:1.8;
-max-width:900px;
-margin:auto;
-margin-bottom:50px;
-font-weight:300;
-}
-.translation{
-font-size:1.35rem;
-line-height:1.9;
-color:#d0d0d0;
-max-width:900px;
-margin:auto;
-margin-bottom:60px;
-font-style:italic;
-}
-.signature{
-font-size:1.8rem;
-letter-spacing:3px;
-margin-bottom:80px;
-opacity:0.9;
-}
-.enter{
-display:inline-block;
-padding:15px 40px;
-border:1px solid white;
-color:white;
-text-decoration:none;
-letter-spacing:4px;
-transition:0.3s;
-font-family:'Cinzel', serif;
-}
-.enter:hover{
-background:white;
-color:black;
-}
-@media(max-width:768px){
-.title{
-font-size:2rem;
-letter-spacing:5px;
-margin-bottom:40px;
-}
-.quote{
-font-size:1.35rem;
-}
-.translation{
-font-size:1.05rem;
-}
-.signature{
-font-size:1.2rem;
-}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACK AND WHITE TEARS</title>
+  <link rel="apple-touch-icon" href="icon.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html, body {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 0 20px;
+      animation: fadein 2s ease both;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── TITRE ARTISTIQUE ───────────────────────────── */
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 80px 0 0;
+    }
+
+    /* Ligne 1 : BLACK + and + WHITE */
+    .title-row1 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* BLACK : texte noir sur fond blanc */
+    .word-black {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(2rem, 9vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #000000;
+      background: #ffffff;
+      padding: 4px 18px 2px;
+      display: inline-block;
+      line-height: 1.2;
+    }
+
+    /* "and" petit connecteur */
+    .word-and {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(0.6rem, 1.8vw, 0.9rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #ffffff;
+      text-transform: lowercase;
+      opacity: 0.5;
+    }
+
+    /* WHITE : texte blanc sur fond noir avec bordure blanche */
+    .word-white {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(2rem, 9vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #ffffff;
+      background: #000000;
+      border: 2px solid #ffffff;
+      padding: 4px 18px 2px;
+      display: inline-block;
+      line-height: 1.2;
+    }
+
+    /* Ligne 2 : TEARS + larme */
+    .title-row2 {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* TEARS : blanc sur noir, sans fond supplémentaire */
+    .word-tears {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(2rem, 9vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #ffffff;
+      display: inline-block;
+      line-height: 1.2;
+      position: relative;
+    }
+
+    /* La larme — SVG discret positionné en haut du T */
+    .tear {
+      position: absolute;
+      top: -14px;
+      left: 2px;
+      width: 9px;
+      height: 13px;
+      opacity: 0.75;
+    }
+
+    /* ─── CITATION ───────────────────────────────────── */
+    .citation-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 70px 24px 60px;
+      max-width: 680px;
+    }
+
+    .quote {
+      font-family: 'Spectral', serif;
+      font-size: clamp(1.35rem, 3.8vw, 2.1rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .signature {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #ffffff;
+    }
+
+    /* ─── IMAGE ──────────────────────────────────────── */
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ─── ENTER ──────────────────────────────────────── */
+    .enter-block {
+      padding: 75px 24px 100px;
+    }
+
+    .enter {
+      display: inline-block;
+      padding: 14px 50px;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: 0.35em;
+      font-family: 'Bodoni Moda', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    .enter:hover,
+    .enter:active {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    @media (max-width: 480px) {
+      .title-block { padding: 60px 0 0; }
+      .citation-block { padding: 55px 16px 50px; }
+      .enter-block { padding: 60px 24px 80px; }
+    }
+
+  </style>
 </head>
 <body>
-<div class="container">
-<div class="title">
-BLACK AND WHITE TEARS
-</div>
-<!-- IMAGE PRINCIPALE -->
-<img src="image1.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
-<div class="quote">
-“From so simple a beginning endless forms most beautiful have been, and are being, evolved.”
-</div>
-<div class="translation">
-« À partir d’un commencement si simple,
-une infinité de formes parmi les plus belles
-ont évolué, et continuent d’évoluer. »
-</div>
-<div class="signature">
-— Charles Darwin
-</div>
-<a href="page2.html" class="enter">
-ENTER
-</a>
-</div>
+
+  <!-- TITRE ARTISTIQUE -->
+  <div class="title-block">
+
+    <div class="title-row1">
+      <span class="word-black">BLACK</span>
+      <span class="word-and">and</span>
+      <span class="word-white">WHITE</span>
+    </div>
+
+    <div class="title-row2">
+      <span class="word-tears">
+        <!-- Petite larme discrète au-dessus du T -->
+        <svg class="tear" viewBox="0 0 10 14" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5,0 C5,0 0.5,6 0.5,9 A4.5,4.5 0 0 0 9.5,9 C9.5,6 5,0 5,0 Z" fill="#ffffff"/>
+        </svg>
+        TEARS
+      </span>
+    </div>
+
+  </div>
+
+  <!-- CITATION -->
+  <div class="citation-block">
+    <p class="quote">L'hérédité est la mémoire de la vie.</p>
+    <p class="signature">— Jean Rostand</p>
+  </div>
+
+  <!-- IMAGE -->
+  <img src="image1.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
+
+  <!-- ENTER -->
+  <div class="enter-block">
+    <a href="page2.html" class="enter">Enter</a>
+  </div>
+
 </body>
 </html>
