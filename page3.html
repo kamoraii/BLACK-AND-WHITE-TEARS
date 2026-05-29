@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLACK AND WHITE TEARS</title>
+  <link rel="apple-touch-icon" href="icon.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html, body {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      animation: fadein 1.8s ease both;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ─── IMAGE ──────────────────────────────────────── */
+    .main-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 80px;
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────────── */
+    .nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      padding: 70px 24px 90px;
+    }
+
+    .nav a {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav a:hover,
+    .nav a:active {
+      opacity: 0.5;
+    }
+
+    .nav-sep {
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.3);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- IMAGE — remplacer image3.jpg par votre photo -->
+  <img src="image3.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <div class="nav-sep"></div>
+    <a href="page2.html">Previous</a>
+    <div class="nav-sep"></div>
+    <a href="page4.html">Next</a>
+  </nav>
+
+</body>
+</html>
