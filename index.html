@@ -11,15 +11,15 @@
   <!-- FACEBOOK / META -->
   <meta property="og:title" content="BLACK AND WHITE TEARS">
 
-  <meta property="og:image" content="https://kamoraii.github.io/BLACK-AND-WHITE-TEARS/image1.jpg">
+  <meta property="og:image" content="https://kamoraii.github.io/BLACK-AND-WHITE-TEARS/main-image.jpg">
 
   <meta property="og:description" content="A parallel wildlife universe where majestic creatures evolve with sacred black-and-white zebra patterns.">
 
-  <!-- Icône iPhone -->
+  <!-- ICÔNE IPHONE -->
   <link rel="apple-touch-icon" href="icon.jpg">
 
-  <!-- Polices -->
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+  <!-- POLICES -->
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
 
@@ -32,15 +32,16 @@
     html, body {
       background:#000000;
       color:#ffffff;
+      overflow-x:hidden;
     }
 
     body {
+      min-height:100vh;
       display:flex;
       flex-direction:column;
       align-items:center;
-      min-height:100vh;
-      padding:0 20px;
-      animation:fadein 2s ease both;
+      animation:fadein 1.8s ease both;
+      padding:0 24px 90px;
     }
 
     @keyframes fadein {
@@ -48,161 +49,105 @@
       to { opacity:1; }
     }
 
-    /* ─── TITRE ───────────────────────────── */
+    /* ───────────────── LOGO ───────────────── */
 
-    .title-block {
+    .logo-block {
+      width:100%;
       display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      padding:80px 0 0;
-    }
-
-    .title-row1 {
-      display:flex;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
       justify-content:center;
+      margin-top:70px;
+      margin-bottom:70px;
     }
 
-    .word-black {
-      font-family:'Bodoni Moda', serif;
-      font-size:clamp(2rem, 9vw, 5.5rem);
-      font-weight:700;
-      letter-spacing:0.12em;
-      color:#000000;
-      background:#ffffff;
-      padding:4px 18px 2px;
-      display:inline-block;
-      line-height:1.2;
+    .logo {
+      width:100%;
+      max-width:680px;
+      height:auto;
+      display:block;
     }
 
-    .word-and {
-      font-family:'Bodoni Moda', serif;
-      font-size:clamp(0.6rem, 1.8vw, 0.9rem);
-      font-weight:700;
-      letter-spacing:0.2em;
-      color:#ffffff;
-      text-transform:lowercase;
-      opacity:0.5;
-    }
+    /* ─────────────── IMAGE PRINCIPALE ─────────────── */
 
-    .word-white {
-      font-family:'Bodoni Moda', serif;
-      font-size:clamp(2rem, 9vw, 5.5rem);
-      font-weight:700;
-      letter-spacing:0.12em;
-      color:#ffffff;
-      background:#000000;
-      border:2px solid #ffffff;
-      padding:4px 18px 2px;
-      display:inline-block;
-      line-height:1.2;
-    }
-
-    .title-row2 {
+    .image-block {
+      width:100%;
       display:flex;
-      align-items:flex-start;
       justify-content:center;
-      position:relative;
+      margin-bottom:70px;
     }
 
-    .word-tears {
-      font-family:'Bodoni Moda', serif;
-      font-size:clamp(2rem, 9vw, 5.5rem);
-      font-weight:700;
-      letter-spacing:0.12em;
-      color:#ffffff;
-      display:inline-block;
-      line-height:1.2;
-      position:relative;
+    .main-image {
+      width:100%;
+      max-width:980px;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      display:block;
     }
 
-    .tear {
-      position:absolute;
-      top:-14px;
-      left:2px;
-      width:9px;
-      height:13px;
-      opacity:0.75;
-    }
-
-    /* ─── CITATION ───────────────────────── */
+    /* ───────────────── CITATION ───────────────── */
 
     .citation-block {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:70px 24px 60px;
-      max-width:680px;
+      max-width:760px;
+      text-align:center;
+      margin-bottom:60px;
+      padding:0 10px;
     }
 
     .quote {
-      font-family:'Spectral', serif;
-      font-size:clamp(1.35rem, 3.8vw, 2.1rem);
-      font-style:italic;
-      font-weight:300;
+      font-family:'Forum', serif;
+      font-size:clamp(1.5rem, 4vw, 2.4rem);
       line-height:1.8;
-      color:#ffffff;
-      text-align:center;
+      letter-spacing:0.03em;
+      color:#f2f2f2;
       margin-bottom:24px;
+      font-weight:400;
     }
 
-    .signature {
-      font-family:'Bodoni Moda', serif;
-      font-size:clamp(0.75rem, 1.8vw, 0.95rem);
-      font-weight:700;
-      letter-spacing:0.2em;
-      color:#ffffff;
-    }
-
-    /* ─── IMAGE ──────────────────────────── */
-
-    .main-image {
-      display:block;
-      width:100%;
-      height:auto;
-    }
-
-    /* ─── ENTER ──────────────────────────── */
-
-    .enter-block {
-      padding:75px 24px 100px;
-    }
-
-    .enter {
-      display:inline-block;
-      padding:14px 50px;
-      border:1px solid #ffffff;
-      color:#ffffff;
-      text-decoration:none;
-      letter-spacing:0.35em;
-      font-family:'Bodoni Moda', serif;
-      font-size:0.78rem;
-      font-weight:700;
+    .author {
+      font-family:'Inter', sans-serif;
+      font-size:0.72rem;
+      letter-spacing:0.28em;
       text-transform:uppercase;
-      transition:background 0.4s ease, color 0.4s ease;
+      color:rgba(255,255,255,0.55);
+      font-weight:300;
     }
 
-    .enter:hover,
-    .enter:active {
-      background:#ffffff;
-      color:#000000;
+    /* ───────────────── GO ON ───────────────── */
+
+    .go-block {
+      margin-top:10px;
     }
 
-    @media (max-width:480px) {
+    .go-on {
+      text-decoration:none;
+      font-family:'Inter', sans-serif;
+      font-size:0.72rem;
+      letter-spacing:0.35em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.38);
+      transition:opacity 0.35s ease;
+      font-weight:300;
+    }
 
-      .title-block {
-        padding:60px 0 0;
+    .go-on:hover,
+    .go-on:active {
+      opacity:0.95;
+    }
+
+    /* ───────────────── MOBILE ───────────────── */
+
+    @media (max-width:768px) {
+
+      .logo-block {
+        margin-top:50px;
+        margin-bottom:50px;
+      }
+
+      .image-block {
+        margin-bottom:55px;
       }
 
       .citation-block {
-        padding:55px 16px 50px;
-      }
-
-      .enter-block {
-        padding:60px 24px 80px;
+        margin-bottom:50px;
       }
 
     }
@@ -213,56 +158,38 @@
 
 <body>
 
-  <!-- TITRE -->
-  <div class="title-block">
+  <!-- LOGO -->
+  <div class="logo-block">
 
-    <div class="title-row1">
+    <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS">
 
-      <span class="word-black">BLACK</span>
+  </div>
 
-      <span class="word-and">and</span>
+  <!-- IMAGE PRINCIPALE -->
+  <div class="image-block">
 
-      <span class="word-white">WHITE</span>
-
-    </div>
-
-    <div class="title-row2">
-
-      <span class="word-tears">
-
-        <svg class="tear" viewBox="0 0 10 14" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5,0 C5,0 0.5,6 0.5,9 A4.5,4.5 0 0 0 9.5,9 C9.5,6 5,0 5,0 Z" fill="#ffffff"/>
-        </svg>
-
-        TEARS
-
-      </span>
-
-    </div>
+    <img src="main-image.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
 
   </div>
 
   <!-- CITATION -->
   <div class="citation-block">
 
-    <p class="quote">
-      L'hérédité est la mémoire de la vie.
-    </p>
+    <div class="quote">
+      “L’évolution est une ascension vers la conscience.”
+    </div>
 
-    <p class="signature">
-      — Jean Rostand
-    </p>
+    <div class="author">
+      — Pierre Teilhard de Chardin
+    </div>
 
   </div>
 
-  <!-- IMAGE -->
-  <img src="image1.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
+  <!-- NAVIGATION -->
+  <div class="go-block">
 
-  <!-- ENTER -->
-  <div class="enter-block">
-
-    <a href="page2.html" class="enter">
-      Enter
+    <a href="page2.html" class="go-on">
+      go on
     </a>
 
   </div>
