@@ -1,200 +1,152 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>BLACK AND WHITE TEARS</title>
-
   <!-- FACEBOOK / META -->
   <meta property="og:title" content="BLACK AND WHITE TEARS">
-
   <meta property="og:image" content="https://kamoraii.github.io/BLACK-AND-WHITE-TEARS/main-image.jpg">
-
   <meta property="og:description" content="A parallel wildlife universe where majestic creatures evolve with sacred black-and-white zebra patterns.">
-
   <!-- ICÔNE IPHONE -->
   <link rel="apple-touch-icon" href="icon.jpg">
-
   <!-- POLICES -->
-  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
-
     *, *::before, *::after {
       margin:0;
       padding:0;
       box-sizing:border-box;
     }
-
     html, body {
       background:#000000;
       color:#ffffff;
       overflow-x:hidden;
     }
-
     body {
       min-height:100vh;
       display:flex;
       flex-direction:column;
       align-items:center;
       animation:fadein 1.8s ease both;
-      padding:0 24px 90px;
+      padding:0 24px 65px;
     }
-
     @keyframes fadein {
       from { opacity:0; }
       to { opacity:1; }
     }
-
     /* ───────────────── LOGO ───────────────── */
-
     .logo-block {
       width:100%;
       display:flex;
       justify-content:center;
-      margin-top:70px;
-      margin-bottom:70px;
+      margin-top:48px;
+      margin-bottom:42px;
     }
-
     .logo {
       width:100%;
-      max-width:680px;
+      max-width:640px;
       height:auto;
       display:block;
     }
-
     /* ─────────────── IMAGE PRINCIPALE ─────────────── */
-
     .image-block {
       width:100%;
       display:flex;
       justify-content:center;
-      margin-bottom:70px;
+      margin-bottom:42px;
     }
-
     .main-image {
       width:100%;
-      max-width:980px;
+      max-width:940px;
       aspect-ratio:1/1;
       object-fit:cover;
       display:block;
     }
-
     /* ───────────────── CITATION ───────────────── */
-
     .citation-block {
       max-width:760px;
       text-align:center;
-      margin-bottom:60px;
+      margin-bottom:38px;
       padding:0 10px;
     }
-
     .quote {
-  font-family: 'Georgia', serif;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.05em;
-      letter-spacing:0.03em;
-      color:#f2f2f2;
-      margin-bottom:24px;
-      font-weight:400;
+      font-family:'Cormorant Infant', serif;
+      font-size:clamp(1.55rem, 4vw, 2.5rem);
+      line-height:1.65;
+      letter-spacing:0.01em;
+      color:#f1f1f1;
+      margin-bottom:18px;
+      font-weight:300;
+      font-style:italic;
     }
-
     .author {
       font-family:'Inter', sans-serif;
       font-size:0.72rem;
       letter-spacing:0.28em;
       text-transform:uppercase;
-      color:rgba(255,255,255,0.55);
+      color:rgba(255,255,255,0.52);
       font-weight:300;
     }
-
     /* ───────────────── GO ON ───────────────── */
-
     .go-block {
-      margin-top:10px;
+      margin-top:4px;
     }
-
     .go-on {
       text-decoration:none;
       font-family:'Inter', sans-serif;
-      font-size:0.72rem;
-      letter-spacing:0.35em;
+      font-size:0.70rem;
+      letter-spacing:0.34em;
       text-transform:uppercase;
-      color:rgba(255,255,255,0.38);
+      color:rgba(255,255,255,0.34);
       transition:opacity 0.35s ease;
       font-weight:300;
     }
-
     .go-on:hover,
     .go-on:active {
-      opacity:0.95;
+      opacity:0.92;
     }
-
     /* ───────────────── MOBILE ───────────────── */
-
     @media (max-width:768px) {
-
       .logo-block {
-        margin-top:50px;
-        margin-bottom:50px;
+        margin-top:38px;
+        margin-bottom:34px;
       }
-
       .image-block {
-        margin-bottom:55px;
+        margin-bottom:34px;
       }
-
       .citation-block {
-        margin-bottom:50px;
+        margin-bottom:30px;
       }
-
+      .quote {
+        line-height:1.55;
+      }
     }
-
   </style>
-
 </head>
-
 <body>
-
   <!-- LOGO -->
   <div class="logo-block">
-
     <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS">
-
   </div>
-
   <!-- IMAGE PRINCIPALE -->
   <div class="image-block">
-
     <img src="main-image.jpg" class="main-image" alt="BLACK AND WHITE TEARS">
-
   </div>
-
   <!-- CITATION -->
   <div class="citation-block">
-
     <div class="quote">
       “L’évolution est une ascension vers la conscience.”
     </div>
-
     <div class="author">
       — Pierre Teilhard de Chardin
     </div>
-
   </div>
-
   <!-- NAVIGATION -->
   <div class="go-block">
-
     <a href="page2.html" class="go-on">
       go on
     </a>
-
   </div>
-
 </body>
-
 </html>
