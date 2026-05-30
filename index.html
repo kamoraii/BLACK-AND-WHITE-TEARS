@@ -19,7 +19,7 @@
   <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    /* RESET & CORRECTION DÉBORDEMENT (trait blanc à droite) */
+    /* RESET & CORRECTION DÉBORDEMENT */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -42,6 +42,12 @@
       padding: 0 24px 65px;
       overflow-y: auto;
       overflow-x: hidden;
+      /* Masque la barre de scroll blanche sur iOS */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    body::-webkit-scrollbar {
+      display: none;
     }
     /* Force tous les éléments à ne pas dépasser */
     * {
@@ -72,7 +78,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-bottom: 12px;   /* remonté : avant 28px → 12px (plus proche de l'image) */
+      margin-bottom: 22px;   /* remonté : 12px → 22px (plus loin de l'image) */
       position: relative;
     }
     .breathe-link {
@@ -90,14 +96,14 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    /* Pulsation douce (clignotement élégant) */
+    /* Pulsation plus intense et plus rapide */
     .breathe-link.pulse {
-      animation: gentlePulse 2.5s ease-in-out infinite;
+      animation: gentlePulse 1.8s ease-in-out infinite;
     }
     @keyframes gentlePulse {
-      0% { opacity: 0.6; }
+      0% { opacity: 0.3; }
       50% { opacity: 1; }
-      100% { opacity: 0.6; }
+      100% { opacity: 0.3; }
     }
     /* Zone cliquable élargie */
     .breathe-link::before {
@@ -174,7 +180,7 @@
         margin-bottom: 20px;
       }
       .breathe-block {
-        margin-bottom: 16px;  /* mobile remonté aussi */
+        margin-bottom: 22px;  /* identique desktop pour cohérence */
       }
       .image-block {
         margin-bottom: 34px;
@@ -235,14 +241,14 @@
         breatheLink.style.opacity = '1';
         breatheLink.classList.add('pulse');
       } else {
-        // Première visite → délai de 5 secondes
+        // Première visite → délai de 3,8 secondes
         breatheLink.style.opacity = '0';
         setTimeout(function() {
           breatheLink.style.opacity = '1';
           breatheLink.classList.add('pulse');
           // Mémoriser pour la prochaine fois (dans cet onglet)
           sessionStorage.setItem('breathe_visited', 'true');
-        }, 5000);
+        }, 3800);  // 3,8 secondes
       }
     })();
   </script>
