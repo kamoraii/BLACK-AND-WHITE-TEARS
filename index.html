@@ -42,14 +42,12 @@
       padding: 0 24px 65px;
       overflow-y: auto;
       overflow-x: hidden;
-      /* Masque la barre de scroll blanche sur iOS */
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
     body::-webkit-scrollbar {
       display: none;
     }
-    /* Force tous les éléments à ne pas dépasser */
     * {
       max-width: 100%;
     }
@@ -58,7 +56,7 @@
       to { opacity: 1; }
     }
 
-    /* LOGO – remonté */
+    /* LOGO */
     .logo-block {
       width: 100%;
       display: flex;
@@ -73,12 +71,12 @@
       display: block;
     }
 
-    /* BLOC BREATHE (entre logo et image) */
+    /* BREATHE - position remontée significativement */
     .breathe-block {
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-bottom: 32px;   /* remonté : 12px → 22px (plus loin de l'image) */
+      margin-bottom: 52px;   /* valeur forte pour bien remonter */
       position: relative;
     }
     .breathe-link {
@@ -92,18 +90,26 @@
       display: inline-block;
       position: relative;
       -webkit-tap-highlight-color: transparent;
-      /* Par défaut invisible, sera révélé par JS */
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    /* Pulsation plus intense et plus rapide */
+    /* Pulsation plus lumineuse au pic */
     .breathe-link.pulse {
-      animation: gentlePulse 1.5s ease-in-out infinite;
+      animation: gentlePulse 1.8s ease-in-out infinite;
     }
     @keyframes gentlePulse {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.3; }
+      0% { 
+        opacity: 0.3;
+        text-shadow: none;
+      }
+      50% { 
+        opacity: 1;
+        text-shadow: 0 0 2px rgba(255,255,255,0.3);
+      }
+      100% { 
+        opacity: 0.3;
+        text-shadow: none;
+      }
     }
     /* Zone cliquable élargie */
     .breathe-link::before {
@@ -115,7 +121,6 @@
       bottom: -14px;
       z-index: 1;
     }
-    /* Effet au toucher */
     .breathe-link:active {
       opacity: 0.8 !important;
       animation: none !important;
@@ -162,7 +167,7 @@
       font-weight: 300;
     }
 
-    /* COPYRIGHT DISCRET */
+    /* COPYRIGHT */
     .copyright {
       margin-top: 30px;
       text-align: center;
@@ -173,14 +178,13 @@
       font-weight: 300;
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       .logo-block {
         margin-top: 8px;
         margin-bottom: 20px;
       }
       .breathe-block {
-        margin-bottom: 22px;  /* identique desktop pour cohérence */
+        margin-bottom: 52px;  /* identique mobile */
       }
       .image-block {
         margin-bottom: 34px;
@@ -188,32 +192,25 @@
       .citation-block {
         margin-bottom: 30px;
       }
-      .quote {
-        line-height: 1.55;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- LOGO -->
   <div class="logo-block">
     <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
 
-  <!-- LIEN "breathe" -->
   <div class="breathe-block">
     <a href="page2.html" class="breathe-link" id="breatheLink" rel="noopener">
       breathe
     </a>
   </div>
 
-  <!-- IMAGE PRINCIPALE -->
   <div class="image-block">
     <img src="main-image.jpg" class="main-image" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
 
-  <!-- CITATION -->
   <div class="citation-block">
     <div class="quote">
       “L’évolution est une ascension vers la conscience.”
@@ -223,7 +220,6 @@
     </div>
   </div>
 
-  <!-- COPYRIGHT -->
   <div class="copyright">
     © Black and White Tears by meda’s
   </div>
@@ -233,22 +229,18 @@
       const breatheLink = document.getElementById('breatheLink');
       if (!breatheLink) return;
 
-      // Vérifier si c'est la première visite dans cet onglet
       const hasVisited = sessionStorage.getItem('breathe_visited');
 
       if (hasVisited) {
-        // Déjà visité → affichage immédiat
         breatheLink.style.opacity = '1';
         breatheLink.classList.add('pulse');
       } else {
-        // Première visite → délai de 3,8 secondes
         breatheLink.style.opacity = '0';
         setTimeout(function() {
           breatheLink.style.opacity = '1';
           breatheLink.classList.add('pulse');
-          // Mémoriser pour la prochaine fois (dans cet onglet)
           sessionStorage.setItem('breathe_visited', 'true');
-        }, 3800);  // 3,8 secondes
+        }, 3800);
       }
     })();
   </script>
