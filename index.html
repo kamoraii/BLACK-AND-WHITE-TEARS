@@ -19,7 +19,7 @@
   <!-- Polices -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    /* RESET & CORRECTION DÉBORDEMENT */
+    /* RESET & CORRECTION DÉBORDEMENT (trait blanc à droite) */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -28,8 +28,9 @@
     html, body {
       background: #000000;
       color: #ffffff;
-      overflow-x: hidden;     /* élimine le trait blanc latéral */
+      overflow-x: hidden;
       width: 100%;
+      max-width: 100%;
       position: relative;
     }
     body {
@@ -40,19 +41,24 @@
       animation: fadein 1.8s ease both;
       padding: 0 24px 65px;
       overflow-y: auto;
+      overflow-x: hidden;
+    }
+    /* Force tous les éléments à ne pas dépasser */
+    * {
+      max-width: 100%;
     }
     @keyframes fadein {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    /* LOGO – remonté (marge haute réduite) */
+    /* LOGO – remonté */
     .logo-block {
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-top: 18px;      /* avant 48px → remontée ~30px */
-      margin-bottom: 24px;   /* espace entre logo et breathe */
+      margin-top: 18px;
+      margin-bottom: 24px;
     }
     .logo {
       width: 100%;
@@ -61,23 +67,13 @@
       display: block;
     }
 
-    /* BLOC BREATHE (lié entre logo et image) */
+    /* BLOC BREATHE (entre logo et image) */
     .breathe-block {
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-bottom: 28px;    /* ajustement sous le lien avant l'image */
+      margin-bottom: 12px;   /* remonté : avant 28px → 12px (plus proche de l'image) */
       position: relative;
-      opacity: 0;              /* caché au départ */
-      visibility: hidden;
-      animation: appearAfter5s 0.01s 5s forwards; /* déclenche l'affichage après 5s */
-    }
-    /* Animation d'apparition : fade + glissement */
-    @keyframes appearAfter5s {
-      to {
-        opacity: 1;
-        visibility: visible;
-      }
     }
     .breathe-link {
       text-decoration: none;
@@ -90,28 +86,20 @@
       display: inline-block;
       position: relative;
       -webkit-tap-highlight-color: transparent;
+      /* Par défaut invisible, sera révélé par JS */
       opacity: 0;
-      transform: translateY(6px);   /* départ légèrement plus bas */
-      animation: breatheReveal 1.2s ease-out 5s forwards, floatGentle 3s ease-in-out 6s infinite;
+      transition: opacity 0.3s ease;
     }
-    /* Effet de révélation : fondu + remontée douce */
-    @keyframes breatheReveal {
-      0% {
-        opacity: 0;
-        transform: translateY(6px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Pulsation douce (clignotement élégant) */
+    .breathe-link.pulse {
+      animation: gentlePulse 2.5s ease-in-out infinite;
     }
-    /* Flottement permanent et très lent après apparition */
-    @keyframes floatGentle {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-1px); }
-      100% { transform: translateY(0px); }
+    @keyframes gentlePulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
     }
-    /* Zone cliquable élargie (invisible) */
+    /* Zone cliquable élargie */
     .breathe-link::before {
       content: '';
       position: absolute;
@@ -121,12 +109,10 @@
       bottom: -14px;
       z-index: 1;
     }
-    /* Arrêt du flottement au survol/toucher pour meilleure interaction */
-    .breathe-link:hover,
+    /* Effet au toucher */
     .breathe-link:active {
-      animation: none;
-      transform: translateY(0);
-      opacity: 0.92;
+      opacity: 0.8 !important;
+      animation: none !important;
     }
 
     /* IMAGE PRINCIPALE */
@@ -170,7 +156,7 @@
       font-weight: 300;
     }
 
-    /* COPYRIGHT TRÈS DISCRET */
+    /* COPYRIGHT DISCRET */
     .copyright {
       margin-top: 30px;
       text-align: center;
@@ -184,11 +170,11 @@
     /* MOBILE */
     @media (max-width: 768px) {
       .logo-block {
-        margin-top: 8px;       /* remontée mobile : avant 38px → 8px */
+        margin-top: 8px;
         margin-bottom: 20px;
       }
       .breathe-block {
-        margin-bottom: 22px;
+        margin-bottom: 10px;  /* mobile remonté aussi */
       }
       .image-block {
         margin-bottom: 34px;
@@ -204,14 +190,14 @@
 </head>
 <body>
 
-  <!-- LOGO (photo importée) -->
+  <!-- LOGO -->
   <div class="logo-block">
     <img src="logo.jpg" class="logo" alt="BLACK AND WHITE TEARS" loading="eager">
   </div>
 
-  <!-- LIEN "breathe" (apparition après 5s, entre logo et image) -->
+  <!-- LIEN "breathe" -->
   <div class="breathe-block">
-    <a href="page2.html" class="breathe-link" rel="noopener">
+    <a href="page2.html" class="breathe-link" id="breatheLink" rel="noopener">
       breathe
     </a>
   </div>
@@ -231,10 +217,34 @@
     </div>
   </div>
 
-  <!-- COPYRIGHT DISCRET -->
+  <!-- COPYRIGHT -->
   <div class="copyright">
     © Black and White Tears by meda’s
   </div>
 
+  <script>
+    (function() {
+      const breatheLink = document.getElementById('breatheLink');
+      if (!breatheLink) return;
+
+      // Vérifier si c'est la première visite dans cet onglet
+      const hasVisited = sessionStorage.getItem('breathe_visited');
+
+      if (hasVisited) {
+        // Déjà visité → affichage immédiat
+        breatheLink.style.opacity = '1';
+        breatheLink.classList.add('pulse');
+      } else {
+        // Première visite → délai de 5 secondes
+        breatheLink.style.opacity = '0';
+        setTimeout(function() {
+          breatheLink.style.opacity = '1';
+          breatheLink.classList.add('pulse');
+          // Mémoriser pour la prochaine fois (dans cet onglet)
+          sessionStorage.setItem('breathe_visited', 'true');
+        }, 5000);
+      }
+    })();
+  </script>
 </body>
 </html>
